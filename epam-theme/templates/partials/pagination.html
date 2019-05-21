@@ -1,0 +1,57 @@
+{% if articles_page and articles_paginator.num_pages > 1 %}
+  {% if DEFAULT_PAGINATION %}
+  <ul class="uui-pagination">
+    {% if articles_page.has_previous() %}
+    {% set num = articles_page.previous_page_number() %}
+    <li class="actions-wrapper">
+      <ul class="pagination-items">
+        <li class="first-page">
+          <a href="{{ SITEURL }}/{{ articles_previous_page.url }}">
+            <span>Newer Posts</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {% else %}
+    <li class="actions-wrapper">
+      <ul class="pagination-items">
+        <li class="first-page disable">
+          <a href="javascript:void(0);">
+            <span>Newer Posts</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {% endif %}
+    <li class="pages-wrapper">
+      <ul class="pagination-items">
+        {% for num in range( 1, 1 + articles_paginator.num_pages ) %}
+            <li class="{{ 'active' if num == articles_page.number else '' }}"><a
+                    href="{{ SITEURL }}/{{ articles_paginator.page(num).url if num > 1 else articles_paginator.page(1).url }}">{{ num }}</a></li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% if articles_page.has_next() %}
+    <li class="actions-wrapper">
+      <ul class="pagination-items">
+        <li class="last-page">
+          <a href="{{ SITEURL }}/{{ articles_next_page.url }}">
+            <span>Older Posts</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {% else %}
+    <li class="actions-wrapper">
+      <ul class="pagination-items">
+        <li class="last-page disable">
+          <a href="javascript:void(0);">
+            <span>Older Posts</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {% endif %}
+  </ul>
+  {% endif %}
+{% endif %}
