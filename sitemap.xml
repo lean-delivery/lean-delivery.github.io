@@ -5,21 +5,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://lean-delivery.com/</loc>
-<lastmod>2019-05-30T18:46:15-00:00</lastmod>
+<lastmod>2019-05-31T00:37:15-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://lean-delivery.com/archives.html</loc>
-<lastmod>2019-05-30T18:46:15-00:00</lastmod>
+<lastmod>2019-05-31T00:37:15-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://lean-delivery.com/tags.html</loc>
-<lastmod>2019-05-30T18:46:15-00:00</lastmod>
+<lastmod>2019-05-31T00:37:15-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -53,7 +53,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://lean-delivery.com/author/arno49</loc>
+<loc>https://lean-delivery.com/author/ivan-bogomazov</loc>
 <lastmod>2019-05-21T14:45:00+01:50</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
