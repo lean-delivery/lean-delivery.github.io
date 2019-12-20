@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en_us">
+
+<head>
+    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>Infrastructure as Code. Why you need it.</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+  <link href="https://lean-delivery.com/" rel="canonical" />
+
+  <!-- Feed -->
+
+  <link href="https://lean-delivery.com/static/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+  <link href="https://lean-delivery.com/static/css/uui-all.min.css" type="text/css" rel="stylesheet" />
+  <link href="https://lean-delivery.com/static/css/font-awesome.css" type="text/css" rel="stylesheet" />
+  <link href="https://lean-delivery.com/static/css/jquery.mCustomScrollbar.min.css" type="text/css" rel="stylesheet" />
+  <link href="https://lean-delivery.com/static/css/style.css" type="text/css" rel="stylesheet" />
+
+  <!-- Code highlight color scheme -->
+      <link href="https://lean-delivery.com/static/css/code_blocks/github.css" rel="stylesheet">
+
+
+
+  <link href="https://lean-delivery.com/2019/12/infrastructure_as_code.html" rel="canonical" />
+
+    <meta name="description" content="Dawn of the Infrastructure as Code At first, when the trees were taller and the grass was green, it was only bare-metal. Each server was...">
+
+    <meta name="author" content="Aliaksei Maiseyeu">
+
+    <meta name="tags" content="technical">
+
+
+
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Lean delivery"/>
+<meta property="og:title" content="Infrastructure as Code. Why you need it."/>
+<meta property="og:description" content="Dawn of the Infrastructure as Code At first, when the trees were taller and the grass was green, it was only bare-metal. Each server was..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://lean-delivery.com/2019/12/infrastructure_as_code.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-12-20 13:00:00+03:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://lean-delivery.com/author/aliaksei-maiseyeu">
+<meta property="article:section" content="articles"/>
+<meta property="article:tag" content="technical"/>
+<meta property="og:image" content="https://lean-delivery.com/static/images/welcome.jpg">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "Infrastructure as Code. Why you need it.",
+  "headline": "Infrastructure as Code. Why you need it.",
+  "datePublished": "2019-12-20 13:00:00+03:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "Aliaksei Maiseyeu",
+    "url": "https://lean-delivery.com/author/aliaksei-maiseyeu"
+  },
+  "image": "https://lean-delivery.com/static/images/welcome.jpg",
+  "url": "https://lean-delivery.com/2019/12/infrastructure_as_code.html",
+  "description": "Dawn of the Infrastructure as Code At first, when the trees were taller and the grass was green, it was only bare-metal. Each server was..."
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+    <div class="wrapper">
+<header>
+    <div class="uui-header navigation-header">
+        <nav>
+            <!--Responsive html-layout-->
+            <div class="uui-responsive-header">
+                <div class="responsive-header">
+                    <div class="responsive-toggle-box">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="responsive-hide-menu">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <a href="https://lean-delivery.com/" class="responsive-brand-logo">
+                        <span class="arrow fa fa-angle-left"></span>
+                        <span class="logo">
+                            <img src="https://lean-delivery.com/static/images/ic_logo_UUi.svg" alt="" />
+                        </span>
+                        <span class="title">Lean delivery</span>
+                    </a>
+                </div>
+                <div class="responsive-menu">
+                    <div class="menu-wrapper">
+                        <div class="menu-scroll">
+                            <ul class="nav navbar-nav">
+                                <li><a href="https://lean-delivery.com/categories.html" role="presentation">Categories</a></li>
+                                <li><a href="https://lean-delivery.com/tags.html" role="presentation">Tags</a></li>
+
+                                        <li role="presentation"><a href="https://lean-delivery.com/pages/about/index.html">About</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---->
+            <a href="https://lean-delivery.com/" class="brand-logo">
+                <span class="logo">
+                    <img src="https://lean-delivery.com/static/images/ic_logo_UUi.svg" alt="" />
+                </span>
+                Lean delivery
+            </a>
+            <ul class="uui-navigation nav navbar-nav">
+                    <li><a href="https://lean-delivery.com/categories.html" role="presentation">Categories</a></li>
+                    <li><a href="https://lean-delivery.com/tags.html" role="presentation">Tags</a></li>
+
+                        <li role="presentation"><a href="https://lean-delivery.com/pages/about/index.html">About</a></li>
+
+            </ul>
+        </nav>
+    </div>
+</header>        <div id="wrapper" class="uui-main-container">
+            <main>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <div id="post-header" class="has-cover">
+      <div class="inner">
+        <h1 class="post-title">Infrastructure as Code. Why you need it.</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://lean-delivery.com/author/aliaksei-maiseyeu">Aliaksei Maiseyeu</a>
+            | <time datetime="Fri 20 December 2019">Fri 20 December 2019</time>
+        </span>
+        <!-- TODO : Modified check -->
+            <div class="post-cover cover" style="background-image: url('https://lean-delivery.com/static/images/welcome.jpg')">
+            </div>
+      </div>
+    </div>
+                <div class="container">
+
+    <!-- Post content -->
+    <div class="content">
+        <article class="post">
+            <section class="post-content">
+                <div class="section" id="dawn-of-the-infrastructure-as-code">
+<h2>Dawn of the Infrastructure as Code</h2>
+<p>At first, when the trees were taller and the grass was green, it was only
+bare-metal. Each server was a separate physical unit. Those were the times
+of simple solutions: you connected the server to the network and power
+source, logged in via telnet / ssh, installed all the necessary software,
+set up cron-jobs for alerts and you were done!</p>
+<p>Then it came time for virtualization. From the early 2000s, the IT industry
+began to plunge into this amazing world, without even assuming how far it
+would go.</p>
+<p>In the beginning, the same approach used to work with bare-metal was
+still good. The only difference was that you had virtual servers instead
+of physical ones. Gradually, the number of servers grew. Old methods began
+to take too much time. This situation stimulated the appearance of provisioners,
+which simplified and accelerated the process of setting up servers and
+installing software.</p>
+<p>Now we live in the era of cloud computing. Today’s engineers may need dozens
+or hundreds of servers to accomplish business goals. Need for a new approach
+has become critical.</p>
+</div>
+<div class="section" id="meet-infrastructure-as-code">
+<h2>Meet Infrastructure as Code</h2>
+<p>Definition:</p>
+<blockquote>
+<p>Infrastructure as code (IaC) is the process of managing and provisioning
+computer data centers through machine-readable definition files, rather than
+physical hardware configuration or interactive configuration tools. <a class="footnote-reference" href="#id3" id="id1">[1]</a></p>
+<p class="attribution">&mdash;Wikipedia</p>
+</blockquote>
+<p>Ability to manage infrastructure as code provides a lot of important benefits!
+From this point we can:</p>
+<ul class="simple">
+<li>infrastructure versioning</li>
+<li>cover it with tests</li>
+<li>scale number of environments with the speed of light</li>
+</ul>
+<p>All these features are available thanks to IaC concept main targets, aimed to:</p>
+<ul class="simple">
+<li><strong>reduce price</strong>: now you utilize your computing resources with the highest efficiency</li>
+<li><strong>increase velocity</strong>: engineers can spend more time on improvements and development
+instead of routine tasks</li>
+<li><strong>decrease risks</strong>: replacing manual operations with automation reduces a chance
+of human error (if your automation is covered by tests ¯\_(ツ)_/¯ )</li>
+</ul>
+</div>
+<div class="section" id="iac-tools">
+<h2>IaC tools</h2>
+<p>So, you decide to implement Infrastructure as Code.</p>
+<p>Now we should choose a proper tool that will match the requirements of your project.</p>
+<p>Cloud vendor's tools short-list:</p>
+<ul class="simple">
+<li>Google Cloud Deployment Manager</li>
+<li>Azure Resource Manager</li>
+<li>AWS CloudFormation</li>
+</ul>
+<p>3rd party tools short-list:</p>
+<ul class="simple">
+<li>Chef</li>
+<li>Terraform</li>
+</ul>
+<p>The advantage of the 3rd party tools is a possibility to manage several clouds.</p>
+</div>
+<div class="section" id="technical-differences-of-iac-tools">
+<h2>Technical differences of IaC tools</h2>
+<blockquote class="epigraph">
+<p><em>«Choose wisely, Luke»</em></p>
+<p class="attribution">&mdash;Yoda, Jedi Master</p>
+</blockquote>
+<p>From the technical perspective, IaC tools implementation has several variations:</p>
+<ul class="simple">
+<li>Mutable Infrastructure vs Immutable Infrastructure</li>
+<li>Procedural vs Declarative</li>
+<li>Master vs Masterless</li>
+<li>Agent vs Agentless</li>
+</ul>
+<p>Each of these options has its strengths and weaknesses. <a class="footnote-reference" href="#id4" id="id2">[2]</a></p>
+<p>Along with that, Terraform aims to be an industry-wide acknowledged mainstream as of today (Dec 2019).
+It’s important to mention the following: as soon as your IaC will describe more
+than several dozens of resources, migration to another tool becomes the pain
+somewhere a little lower than the back. And there is no automated tool to
+relieve this pain.</p>
+</div>
+<div class="section" id="few-words-about-terraform">
+<h2>Few words about Terraform</h2>
+<div class="section" id="modules">
+<h3>Modules</h3>
+<p>A module is a container for multiple resources that are used together.
+Every Terraform configuration has at least one module, known as its root
+module, which consists of the resources defined in the .tf files in the
+main working directory.</p>
+<p>A module can call other modules, which lets you include the child
+module's resources into the configuration in a concise way. Modules can
+also be called multiple times, either within the same configuration or
+in separate configurations, allowing resource configurations to be
+packaged and re-used.</p>
+<p>Here is a code example that allows to create basic network infrastructure
+in AWS:</p>
+<pre class="literal-block">
+module &quot;core&quot; {
+  source = &quot;github.com/lean-delivery/tf-module-aws-core.git?ref=1.0.0&quot;
+
+  project            = &quot;amazing&quot;
+  environment        = &quot;production&quot;
+  availability_zones = [&quot;us-east-1a&quot;, &quot;us-east-1b&quot;]
+  vpc_cidr           = &quot;10.0.0.0/8&quot;
+  private_subnets    = [&quot;10.0.1.0/24&quot;, &quot;10.0.2.0/24&quot;]
+  public_subnets     = [&quot;10.0.3.0/24&quot;, &quot;10.0.4.0/24&quot;]
+
+  database_subnets             = var.database_subnets
+  create_database_subnet_group = true
+
+  enable_nat_gateway = true
+}
+</pre>
+<p>More useful Terraform modules can be found Lean Delivery project on GitHub:</p>
+<p><a class="reference external" href="https://github.com/lean-delivery">https://github.com/lean-delivery</a></p>
+</div>
+<div class="section" id="workspaces">
+<h3>Workspaces</h3>
+<p>Each Terraform configuration has an associated back-end that defines how
+operations are executed and where persistent data such as the Terraform
+state is stored. The persistent data stored in the back-end belongs to a
+workspace. Initially, the back-end has only one workspace called
+&quot;default&quot;, and thus, there is only one Terraform state associated with
+this configuration.</p>
+<p>Certain back-ends support multiple named workspaces, allowing multiple
+states to be associated with a single configuration. The configuration
+still has only one back-end, but multiple distinct instances of that
+configuration can be deployed without configuring a new back-end or
+changing authentication credentials.</p>
+<p>Multiple workspaces are currently supported by the following backends:</p>
+<ul class="simple">
+<li>AzureRM</li>
+<li>Hashicorp Consul</li>
+<li>Google Compute Storage</li>
+<li>Local File system</li>
+<li>Manta</li>
+<li>Postgres</li>
+<li>Terraform Remote</li>
+<li>AWS S3</li>
+</ul>
+</div>
+<div class="section" id="terraservices">
+<h3>Terraservices</h3>
+<p>Terraservices concept was presented by Nicki Watt on <a class="reference external" href="https://www.hashicorp.com/resources/evolving-infrastructure-terraform-opencredo">&quot;Hashidays London
+2017&quot;</a>.</p>
+<blockquote>
+And the name is akin to microservices because I do think there's
+some similarity in the evolution of how we got here. So, the
+characteristics of Terraservices is that we have, we break up
+components up into logical modules and we manage them separately. So
+now we move to having one state file per component, rather than per
+environment. And typically, if you haven't done so already, you will
+start moving to a distributed or a mode state type of setup.</blockquote>
+</div>
+</div>
+<div class="section" id="terraform-power-on">
+<h2>&quot;Terraform power, on!&quot;</h2>
+<p>After almost two years of using Terraform we have finally found our
+best practices. And now we will share them with you.</p>
+<dl class="docutils">
+<dt>Assumption</dt>
+<dd>Let's use AWS as cloud provider in this example</dd>
+</dl>
+<div class="section" id="classic-case">
+<h3>Classic case</h3>
+<p>We should prepare infrastructure for a new service. That includes:</p>
+<ul class="simple">
+<li>several EC2 instances for back-end and frontend</li>
+<li>some of these instances should be balanced with ALB</li>
+<li>RDS</li>
+<li>VPC for all this stuff with subnets, routing tables, etc.</li>
+</ul>
+</div>
+<div class="section" id="solution">
+<h3>Solution</h3>
+<dl class="docutils">
+<dt>Assumption</dt>
+<dd>In this example let's use AWS S3 as a storage for Terraform state files</dd>
+</dl>
+<div class="section" id="no-one-likes-meaningless-duplication">
+<h4>No one likes meaningless duplication</h4>
+<p>In our approach we use data inheritance from one terraservice to another.
+It is possible with Terraform data source <tt class="docutils literal">terraform_remote_state</tt>.
+Through it we can receive any data, outputted in terraservices that have
+already been applied. As a result, in every new terraservice we should
+manually define only a few variables that are specific for it.</p>
+</div>
+<div class="section" id="divide-and-rule">
+<h4>Divide and rule</h4>
+<p>According to Terraservices concept, we divide our Terraform code
+into several groups:</p>
+<pre class="literal-block">
+0. terraform state storage infrastructure
+1. core infra: VPC, Subnets, routing tables, etc.
+2. common resources
+    * bastion instance (if needed)
+    * RDS
+    * network connectivity (if needed)
+3. infrastructure for our new service
+</pre>
+<p>The last point could contain several separate Terraservices, depending
+on your target infrastructure:</p>
+<pre class="literal-block">
+0. terraform state storage infrastructure (S3 and DynamoDB table)
+1. core infra (VPC, Subnets, routing tables, etc.)
+2. common resources
+    * bastion instance (if needed)
+    * RDS
+    * network connectivity (if needed)
+3. infrastructure for our new service
+    * shared resources
+    * service's backend
+    * service's frontend
+</pre>
+<dl class="docutils">
+<dt>Notice</dt>
+<dd><p class="first">If you want to separate Production and non-Production environments
+by placing them in different accounts, you should move Terraform
+backend configuration from <tt class="docutils literal">*.tf</tt> files to the separate <tt class="docutils literal">*.hcl</tt> files.
+It allows you to choose required back-end on <tt class="docutils literal">terraform init</tt> step:</p>
+<p class="last"><tt class="docutils literal">[user&#64;host ~] $ terraform init <span class="pre">-backend-config=/path/to/your/tf_backend_config.hcl</span></tt></p>
+</dd>
+</dl>
+<p>The catalog tree in your repository will look this:</p>
+<img alt="" src="https://lean-delivery.com/images/infrastructure_as_code_file_tree.png" />
+<p>Some readers may ask: &quot;Why do you store tfstate files for <tt class="docutils literal">0_terraform_infra</tt> in your git repository?&quot;
+There is an answer: code in <tt class="docutils literal">0_terraform_infra</tt> performs the creation of S3 for our Terraform backend,
+and until it doesn’t exist we have no other place to store tfstate files. These files don’t contain
+any sensitive data, so we don't break git best practices (I mean &quot;never store any secrets in your repository&quot;).</p>
+<p>Also <tt class="docutils literal">0_terraform_infra</tt> creates a Terraform backend config file (<tt class="docutils literal">prod.hcl</tt>, <tt class="docutils literal">dev.hcl</tt>), which will be used
+for all future terraservices. A name of the file will be generated based on the workspace name.</p>
+</div>
+<div class="section" id="by-the-power-of-workspaces">
+<h4>&quot;By the power of Workspaces!&quot;</h4>
+<p>Alright, we have a Terraform code for our infrastructure. But it should manage several environments, prod and dev, at least.
+Terraform workspaces are designed right for this!
+But first, let's agree on the naming convention.</p>
+<dl class="docutils">
+<dt>Assumption</dt>
+<dd>Workspace name will contain the environment name and AWS Region name, eg <tt class="docutils literal"><span class="pre">prod-eu-west-1</span></tt> and <tt class="docutils literal"><span class="pre">dev-us-east-1</span></tt>.</dd>
+</dl>
+<p>For <tt class="docutils literal">prod</tt> and <tt class="docutils literal">dev</tt> environments we should use different input values, that’s why each environment should have a separate <tt class="docutils literal">*.tfvars</tt> file.
+Let's name them according to the workspace name to avoid confusion: <tt class="docutils literal"><span class="pre">prod-eu-west-1.tfvars</span></tt> and <tt class="docutils literal"><span class="pre">dev-us-east-1.tfvars</span></tt>.</p>
+<p>Setup sequence example for <tt class="docutils literal">1_core</tt>:</p>
+<pre class="literal-block">
+[user&#64;host 1_core] $ terraform init -backend-config=../dev.hcl                  # Initialize backend for dev environment
+[user&#64;host 1_core] $ terraform workspace new dev-us-east-1                      # Create new workspace for dev environment
+[user&#64;host 1_core] $ terraform apply -var-file=tfvars/dev-us-east-1.tfvars      # Create dev infrastructure by applying Terraform code
+[user&#64;host 1_core] $ rm -rf .terraform                                          # Remove backend configuration for dev env
+[user&#64;host 1_core] $ terraform init -backend-config=../prod.hcl                 # Initialize backend for production environment
+[user&#64;host 1_core] $ terraform workspace new prod-eu-west-1                     # Create new workspace for production environment
+[user&#64;host 1_core] $ terraform apply -var-file=tfvars/prod-eu-west-1.tfvars     # Create prod infrastructure by applying Terraform code
+</pre>
+</div>
+<div class="section" id="infrastructure-assemble">
+<h4>&quot;Infrastructure, assemble!&quot;</h4>
+<p>Using all the described hints, you’ll get flexible control on each level of
+your environments. Competent separation of your infrastructure code
+will allow you to update any part of the infrastructure safely, with minimum
+risks and lowest effect on other parts of the service.</p>
+</div>
+</div>
+</div>
+<div class="section" id="sources">
+<h2>Sources</h2>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Wittig, Andreas; Wittig, Michael (2016). Amazon Web Services in Action. Manning Press. p. 93. ISBN 978-1-61729-288-0.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://blog.gruntwork.io/why-we-use-terraform-and-not-chef-puppet-ansible-saltstack-or-cloudformation-7989dad2865c">https://blog.gruntwork.io/why-we-use-terraform-and-not-chef-puppet-ansible-saltstack-or-cloudformation-7989dad2865c</a></td></tr>
+</tbody>
+</table>
+</div>
+
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=Infrastructure as Code. Why you need it.&amp;url=https://lean-delivery.com/2019/12/infrastructure_as_code.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="fa fa-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://lean-delivery.com/2019/12/infrastructure_as_code.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="fa fa-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=https://lean-delivery.com/2019/12/infrastructure_as_code.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="fa fa-google-plus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="post-tags">
+<a class="uui-label blue" href="https://lean-delivery.com/tag/technical" title="technical">technical</a>                </div>
+
+                <div class="clear"></div>
+
+
+                </section>
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    var disqus = 'lean-delivery-com';
+                    var disqus_shortname = 'lean-delivery-com';
+                    var disqus_identifier = '/2019/12/infrastructure_as_code.html';
+                    var disqus_url = 'https://lean-delivery.com/2019/12/infrastructure_as_code.html';
+                </script>
+
+                <div class="post-nav">
+                    <a class="post-nav-prev" href="https://lean-delivery.com/2019/08/contribution_guide.html">
+                        <section class="post-nav-teaser">
+                            <h2 class="post-nav-title">Contribution guide</h2>
+                            <p class="post-nav-excerpt">Hi all! When you decide to share your perfect solution with community by posting it in...</p>
+                        </section>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+        </article>
+    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer id="footer">
+            <div class="uui-footer">
+                <div class="footer-logo-copyright">
+                    <div class="epam-logo">
+                        <img src="https://lean-delivery.com/static/images/Logo_Epam_Color.svg" alt="" />
+                    </div>
+                    <p class="copyright">© 2019 EPAM Systems. All Rights Reserved.</p>
+                </div>
+            </div>
+            <!--<div class="inner">-->
+                <!--<section class="credits">-->
+                    <!---->
+                        <!---->
+                            <!---->
+                    <!---->
+
+                    <!---->
+                        <!---->
+                    <!---->
+
+                    <!--<span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>-->
+                    <!--<span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>-->
+                    <!---->
+                <!--</section>-->
+            <!--</div>-->
+        </footer>
+    </div>
+
+    <script type="text/javascript" src="https://lean-delivery.com/static/js/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="https://lean-delivery.com/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://lean-delivery.com/static/js/uui-core.min.js"></script>
+    <script type="text/javascript" src="https://lean-delivery.com/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <!--<script type="text/javascript" src="https://lean-delivery.com/static/js/script.js"></script>-->
+    <script type="text/javascript" src="https://lean-delivery.com/static/js/theme-js.js"></script>
+
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141126312-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-141126312-1', { 'anonymize_ip': true });
+    </script>
+    <script type="text/javascript">
+        var disqus_config = function () {
+            // Replace PAGE_URL with your page's canonical URL variable
+            this.page.url = disqus_url;
+
+            // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+            var d = document, s = d.createElement('script');
+
+            // IMPORTANT: Replace EXAMPLE with your forum shortname!
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>
+        Please enable JavaScript to view the
+        <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+            comments powered by Disqus.
+        </a>
+    </noscript>
+</body>
+</html>
